@@ -24,6 +24,9 @@ OBJS = $(SRCS:.c=.o)
 #### LIBFT HEADER COMPILED ####
 LIBFT_COMPILED = libft_updated/libft_updated.a
 
+#### MLX ####
+MLX_COMPILED = minilibx-linux/libmlx.a
+
 ### FINAL COMPILATION FILE ###
 NAME = so_long
 
