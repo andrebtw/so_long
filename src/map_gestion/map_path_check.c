@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 16:20:28 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/11 16:22:00 by anrodri2         ###   ########.fr       */
+/*   Updated: 2022/12/21 22:09:28 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,14 @@ int	path_check(char **map)
 {
 	t_map_info 	mapi;
 	t_map		mapc;
-	int			**c_points;
+	int			**c_coords;
 
 	mapc.x = 0;
 	mapc.y = 0;
 	mapi.c_count = count_c(map, mapc);
 	mapi = find_e_index(map, mapc, mapi);
 	mapi = find_p_index(map, mapc, mapi);
-	c_points = get_collectibles(map);
+	c_coords = get_collectibles(map);
+	tab_free_int(c_coords);
 	return (0);
 }

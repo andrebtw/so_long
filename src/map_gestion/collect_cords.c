@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:26:50 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/11 16:22:56 by anrodri2         ###   ########.fr       */
+/*   Updated: 2022/12/21 16:14:05 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	tab_free_int(int **tab)
 		free(tab[y]);
 		y++;
 	}
+	free(tab[y]);
 	free(tab);
 }
 
@@ -43,7 +44,7 @@ int	**add_element(int **points, int y, int x)
 	int	**new_points;
 
 	i = 0;
-	new_points = (int **) (sizeof(int **) * tab_len(points) + 2);
+	new_points = (int **) malloc (sizeof(int **) * (tab_len(points) + 2));
 	while (points[i])
 	{
 		new_points[i] = (int *) malloc (sizeof(int) * 2);
@@ -53,8 +54,15 @@ int	**add_element(int **points, int y, int x)
 		new_points[i][1] = points[i][1];
 		i++;
 	}
+	new_points[i] = (int *) malloc (sizeof(int) * 2);
+	if (!new_points)
+		return (tab_free_int(new_points), NULL);
 	new_points[i][0] = y;
 	new_points[i][1] = x;
+	new_points[i + 1] = (int *) malloc (sizeof(int) * 2);
+	if (!new_points)
+		return (tab_free_int(new_points), NULL);
+	free(new_points[i + 1]);
 	new_points[i + 1] = NULL;
 	tab_free_int(points);
 	return (new_points);
@@ -91,6 +99,7 @@ int	**get_collectibles(char **map)
 	points[0] = (int *) malloc (sizeof(int *) * 1);
 	if (!points[0])
 		return (free(points), NULL);
+	free(points[0]);
 	points[0] = NULL;
 	mapc.x = 0;
 	mapc.y = 0;

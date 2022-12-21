@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/11 16:20:45 by anrodri2         ###   ########.fr       */
+/*   Updated: 2022/12/21 22:09:00 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ t_map_info	find_e_index(char **map, t_map mapc, t_map_info mapi);
 int			count_c(char **map, t_map mapc);
 int			tab_size(char **tab);
 int			**get_collectibles(char **map);
+void		tab_free_int(int **tab);
 
 #endif
