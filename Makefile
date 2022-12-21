@@ -9,7 +9,10 @@ CFLAGS = -Wall -Wextra -Werror
 SRC_DIR = src
 
 #### SOURCE FILES ####
-SRCS = $(SRC_DIR)/main.c
+SRCS =	$(SRC_DIR)/main.c \
+		$(SRC_DIR)/errors_check/check_errors.c \
+		$(SRC_DIR)/errors_check/error_printing.c
+
 OBJS = $(SRCS:.c=.o)
 
 #### LIBFT HEADER COMPILED ####
@@ -17,7 +20,6 @@ LIBFT_COMPILED = libft_updated/libft_updated.a
 
 ### FINAL COMPILATION FILE ###
 NAME = so_long
-
 
 #### RULES ####
 $(NAME):	$(OBJS) $(HEADER)

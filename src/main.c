@@ -1,8 +1,8 @@
 #include "header.h"
 
-int	main(int argn, char **argc)
+int	main(int argn, char **args)
 {
-	if (check_map_and_errors(argnm argc) == -1)
+	if (check_errors(argn, args) == -1)
 		return (-1);
 	return (0);
 }

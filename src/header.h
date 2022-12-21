@@ -1,7 +1,18 @@
 #ifndef HEADER_H
 # define HEADER_H
 
-#include "../libft_updated/libft_updated.h"
-#include <stdlib.h>
+// COLORS //
+#define KNORMAL  "\x1B[0m"
+#define KRED  "\x1B[31m"
+#define KGREEN  "\x1B[32m"
+#define KYELLOW  "\x1B[33m"
+#define KBLUE  "\x1B[34m"
+#define KWHITE  "\x1B[37m"
+
+# include "../libft_updated/libft_updated.h"
+# include <stdlib.h>
+
+void    error_printing(char *details, char *advice, char *example);
+int	    check_errors(int argn, char **args);
 
 #endif
