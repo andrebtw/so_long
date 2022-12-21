@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:26:58 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/11 17:45:24 by anrodri2         ###   ########.fr       */
+/*   Updated: 2022/12/21 17:12:58 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	check_characters(char **map, char *allowed_characters)
 	return (check_doubles(map));
 }
 
-int	map_check(char **map)
+int	map_check(char **map, char *file)
 {
 	char	*allowed_characters;
 
@@ -106,7 +106,7 @@ int	map_check(char **map)
 	free(allowed_characters);
 	if (check_if_rectangular(map) == ERROR || check_walls(map) == ERROR)
 		return (ERROR);
-	if (path_check(map) == ERROR)
+	if (path_check(map, file) == ERROR)
 	{
 		error_printing("This map is impossible to complete.",
 			"Make sure your map is possible to win.",
