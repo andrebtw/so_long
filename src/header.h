@@ -11,6 +11,8 @@
 
 # include "../libft_updated/libft_updated.h"
 # include <stdlib.h>
+# include <string.h>
+# include <stdint.h>
 
 void    error_printing(char *details, char *advice, char *example);
 int	    check_errors(int argn, char **args);
