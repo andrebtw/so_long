@@ -57,7 +57,7 @@ void	*ft_memset(void *s, int c, size_t n);
 
 // String manipulation //
 // strjoin : joins both strings ; ex : "hello", "world" ; value : "helloworld"
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2, int free_first, int free_second);
 // strlcat : appends src to the end of dst. 
 // It will append at most size - strlen(dst) - 1 bytes
 size_t	ft_strlcat(char *dst, const char *src, size_t size);

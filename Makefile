@@ -11,7 +11,9 @@ SRC_DIR = src
 #### SOURCE FILES ####
 SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/errors_check/check_errors.c \
-		$(SRC_DIR)/errors_check/error_printing.c
+		$(SRC_DIR)/errors_check/error_printing.c \
+		$(SRC_DIR)/game/main_game.c \
+		$(SRC_DIR)/map_gestion/map_opening.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -24,10 +26,10 @@ NAME = so_long
 #### RULES ####
 $(NAME):	$(OBJS) $(HEADER)
 			$(MAKE) -C libft_updated/
-			$(CC) $(FLAGS) $(OBJS) $(LIBFT_COMPILED) -o $(NAME)
+			$(CC) $(FLAGS) $(OBJS) $(LIBFT_COMPILED) -o $(NAME) -g3
 
 %.o: %.c	$(HEADER) Makefile
-			$(CC) $(CFLAGS) -c $< -o $@
+			$(CC) $(CFLAGS) -c $< -o $@ -g3
 
 all:		$(NAME)
 
