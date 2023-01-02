@@ -15,10 +15,13 @@
 int	main_game(char *file)
 {
 	char	**map;
-	int y = 0;
 	map = map_opening(file);
 	if (!map)
 		return (ERROR);
-	ft_printf("%s", map[y]);
+	ft_printf("%s", map[0]);
+	ft_printf("%s", map[1]);
+	ft_printf("%s", map[2]);
+	ft_printf("%s", map[3]);
+	ft_printf("%s", map[4]);
 	return (0);
 }

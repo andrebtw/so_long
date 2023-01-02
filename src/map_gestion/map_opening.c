@@ -49,9 +49,11 @@ char	**reading_loop(int fd)
 	{
 		temp_string = get_next_line(fd);
 		if (temp_string)
-			ft_memmove(map_points[y], temp_string, ft_strlen(temp_string));
+		{
+			ft_memmove(map_points[y], temp_string, ft_strlen(temp_string) + 1);
+			free(temp_string);
+		}
 		y++;
-		free(temp_string);
 	}
 	map_points[y] = NULL;
 	return (map_points);
