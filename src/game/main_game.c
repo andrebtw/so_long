@@ -15,13 +15,15 @@
 int	main_game(char *file)
 {
 	char	**map;
+	//char	*test = NULL;
+	int		i = 0;
 	map = map_opening(file);
 	if (!map)
 		return (ERROR);
-	ft_printf("%s", map[0]);
-	ft_printf("%s", map[1]);
-	ft_printf("%s", map[2]);
-	ft_printf("%s", map[3]);
-	ft_printf("%s", map[4]);
+	while (map[i])
+	{
+		ft_printf("%s", map[i]);
+		i++;
+	}
 	return (0);
 }

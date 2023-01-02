@@ -55,7 +55,7 @@ char	**reading_loop(int fd)
 		}
 		y++;
 	}
-	map_points[y] = NULL;
+	map_points[y - 1] = NULL;
 	return (map_points);
 }
 
