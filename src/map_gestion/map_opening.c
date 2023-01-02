@@ -12,37 +12,55 @@
 
 #include "../header.h"
 
-char	**reading_loop(char *temp_string, int y, int fd)
+void	free_all(char	**map_points, int y)
 {
-	char	*main_string;
-	char	**map_points;
+	int	index;
 
-	main_string = (char *) malloc (sizeof(char) * 1);
-	if (!main_string)
-		return (NULL);
+	index = 0;
+	while (index <= y)
+	{
+		free(map_points[index]);
+		index++;
+	}
+	free(map_points);
+}
+
+
+char	**reading_loop(int fd)
+{
+	char	**map_points;
+	char	*temp_string;
+	int		y;
+
+	y = 0;
+	temp_string = (void *)1;
+	map_points = malloc (9000);
+	map_points[0] = malloc (100);
+	map_points[1] = malloc (100);
+	map_points[2] = malloc (100);
+	map_points[3] = malloc (100);
+	map_points[4] = malloc (100);
+	map_points[5] = malloc (100);
+	map_points[6] = malloc (100);
+	map_points[7] = malloc (100);
+	map_points[8] = malloc (100);
+
 	while (temp_string)
 	{
 		temp_string = get_next_line(fd);
 		if (temp_string)
-			temp_string = ft_strjoin(temp_string, ";", 1, 0);
-		if (temp_string && temp_string[0] != '\0')
-			main_string = ft_strjoin(main_string, temp_string, 1, 1);
+			ft_memmove(map_points[y], temp_string, ft_strlen(temp_string));
 		y++;
+		free(temp_string);
 	}
-	map_points = ft_split(main_string, ';');
+	map_points[y] = NULL;
 	return (map_points);
 }
 
 char	**map_opening(char *file)
 {
-	char	*temp_string;
 	int		fd;
-	int		y;
 
-	temp_string = (char *) malloc (sizeof(char) * 1);
-	if (!temp_string)
-		return (NULL);
-	y = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
@@ -50,5 +68,5 @@ char	**map_opening(char *file)
 			"Make sure the file exists.", "./so_long map.ber");
 		return (NULL);
 	}
-	return (reading_loop(temp_string, y, fd));
+	return (reading_loop(fd));
 }

@@ -28,6 +28,7 @@
 # include <string.h>
 # include <stdint.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 void	error_printing(char *details, char *advice, char *example);
 int		check_errors(int argn, char **args);
