@@ -13,7 +13,8 @@ SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/errors_check/check_errors.c \
 		$(SRC_DIR)/errors_check/error_printing.c \
 		$(SRC_DIR)/game/main_game.c \
-		$(SRC_DIR)/map_gestion/map_opening.c
+		$(SRC_DIR)/map_gestion/map_opening.c \
+		$(SRC_DIR)/map_gestion/map_check.c
 
 OBJS = $(SRCS:.c=.o)
 

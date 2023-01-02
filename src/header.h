@@ -34,5 +34,6 @@ void	error_printing(char *details, char *advice, char *example);
 int		check_errors(int argn, char **args);
 int		main_game(char *file);
 char	**map_opening(char *file);
+int		map_check(char **map);
 
 #endif

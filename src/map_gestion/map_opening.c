@@ -25,6 +25,30 @@ void	free_all(char	**map_points, int y)
 	free(map_points);
 }
 
+char	**update_tab(char **map_points, int y, char *temp_string)
+{
+	char	**r_value;
+	int		i;
+
+	i = 0;
+	r_value = (char **) malloc ((y + 2) * sizeof(char **));
+	if (!r_value)
+		return (free_all(map_points, y), NULL);
+	while (i < y)
+	{
+		r_value[i] = (char *) malloc (ft_strlen(map_points[i]) + 1);
+		if (!r_value)
+			return (free_all(map_points, y), free_all(r_value, i), NULL);
+		ft_memmove(r_value[i], map_points[i], ft_strlen(map_points[i]) + 1);
+		free(map_points[i]);
+		i++;
+	}
+	r_value[y] = (char *) malloc (ft_strlen(temp_string) + 1);
+	if (!r_value)
+		return (free_all(map_points, y), free_all(r_value, i), NULL);
+	ft_memmove(r_value[y], temp_string, ft_strlen(temp_string) + 1);
+	return (free(map_points), r_value);
+}
 
 char	**reading_loop(int fd)
 {
@@ -34,23 +58,15 @@ char	**reading_loop(int fd)
 
 	y = 0;
 	temp_string = (void *)1;
-	map_points = malloc (9000);
-	map_points[0] = malloc (100);
-	map_points[1] = malloc (100);
-	map_points[2] = malloc (100);
-	map_points[3] = malloc (100);
-	map_points[4] = malloc (100);
-	map_points[5] = malloc (100);
-	map_points[6] = malloc (100);
-	map_points[7] = malloc (100);
-	map_points[8] = malloc (100);
-
+	map_points = (char **) malloc (2 * sizeof(char **));
+	if (!map_points)
+		return (NULL);
 	while (temp_string)
 	{
 		temp_string = get_next_line(fd);
 		if (temp_string)
 		{
-			ft_memmove(map_points[y], temp_string, ft_strlen(temp_string) + 1);
+			map_points = update_tab(map_points, y, temp_string);
 			free(temp_string);
 		}
 		y++;
