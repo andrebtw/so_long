@@ -12,10 +12,38 @@
 
 #include "../header.h"
 
+int	check_characters(char **map, char *allowed_characters)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (map[y])
+	{
+		while (map[y][x])
+		{
+			if (ft_strchr(allowed_characters, map[y][x]) == NULL)
+			{
+				error_printing("Illegal characters found on your map file.",
+					"Make sure your file only has '01CEP'",
+					"\n\n111111\n1PCCE1\n111111");
+				return (ERROR);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
 int	map_check(char **map)
 {
 	char	*allowed_characters;
 
-	allowed_characters = ft
+	allowed_characters = ft_strdup("01CEP\n");
+	if (check_characters(map, allowed_characters) == ERROR)
+		return (ERROR);
+	free(allowed_characters);
 	return (0);
 }

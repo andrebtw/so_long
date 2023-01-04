@@ -15,11 +15,19 @@
 int	main_game(char *file)
 {
 	char	**map;
+	int		y;
 
+	y = 0;
 	map = map_opening(file);
 	if (!map)
 		return (ERROR);
 	if (map_check(map) == ERROR)
 		return (ERROR);
+	while (map[y])
+	{
+		free(map[y]);
+		y++;
+	}
+	free(map);
 	return (0);
 }
