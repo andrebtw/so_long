@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2022/12/30 11:36:43 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:34:27 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int		check_errors(int argn, char **args);
 int		main_game(char *file);
 char	**map_opening(char *file);
 int		map_check(char **map);
+void	tab_free(char **tab);
 
 #endif

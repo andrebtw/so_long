@@ -6,11 +6,24 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:09:10 by anrodri2          #+#    #+#             */
-/*   Updated: 2022/12/26 19:09:10 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:34:17 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+
+void	tab_free(char **tab)
+{
+	int	y;
+
+	y = 0;
+	while (tab[y])
+	{
+		free(tab[y]);
+		y++;
+	}
+	free(tab);
+}
 
 void	free_all(char	**map_points, int y)
 {
