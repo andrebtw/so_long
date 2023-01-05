@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 19:26:58 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/05 15:41:56 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/05 22:03:59 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ int	map_check(char **map)
 
 	allowed_characters = ft_strdup("01CEP\n");
 	if (check_characters(map, allowed_characters) == ERROR)
+		return (free(allowed_characters), ERROR);
+	if (check_if_rectangular(map) == ERROR)
 		return (free(allowed_characters), ERROR);
 	return (free(allowed_characters), 0);
 }
