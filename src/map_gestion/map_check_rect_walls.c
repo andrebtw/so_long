@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 22:03:37 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/07 15:44:25 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:04:35 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	check_wall_first_last_line(char **map, t_map mapc)
 	mapc.x = 0;
 	while (map[0][mapc.x])
 	{
-		//ft_printf("%c", map[0][mapc.x]);
 		if (map[0][mapc.x] != '1' && map[0][mapc.x] != '\n')
 			return (ERROR);
 		mapc.x++;
@@ -78,8 +77,8 @@ int	check_walls(char **map)
 		mapc.y++;
 	}
 	if (check_wall_first_last_line(map, mapc) == ERROR)
-			return (error_printing("The walls do not close the map.",
-					"Make sure the walls close the entire map.",
-					"\n\n111111\n1PCCE1\n111111"), ERROR);
+		return (error_printing("The walls do not close the map.",
+				"Make sure the walls close the entire map.",
+				"\n\n111111\n1PCCE1\n111111"), ERROR);
 	return (0);
 }
