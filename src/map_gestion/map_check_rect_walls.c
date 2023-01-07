@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check_rect.c                                   :+:      :+:    :+:   */
+/*   map_check_rect_walls.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 22:03:37 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/05 22:17:22 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/07 11:37:41 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,10 @@ int	check_if_rectangular(char **map)
 		saved_length = mapc.x;
 		mapc.y++;
 	}
+	return (0);
+}
+
+int	check_walls(char **map)
+{
 	return (0);
 }

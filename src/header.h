@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/05 22:14:27 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/07 11:37:38 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ char	**map_opening(char *file);
 int		map_check(char **map);
 void	tab_free(char **tab);
 int		check_if_rectangular(char **map);
+int		check_walls(char **map);
 
 // MAP STRUCT //
+
 typedef struct s_map
 {
 	int	y;
