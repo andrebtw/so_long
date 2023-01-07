@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/07 11:37:38 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/07 16:22:13 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define KYELLOW "\x1B[33m"
 # define KBLUE "\x1B[34m"
 # define KWHITE "\x1B[37m"
+
+// ERROR CODES //
 # define ERROR -1
 # define MALLOC_ERROR -2
 
@@ -38,6 +40,7 @@ int		map_check(char **map);
 void	tab_free(char **tab);
 int		check_if_rectangular(char **map);
 int		check_walls(char **map);
+int		path_check(char **map);
 
 // MAP STRUCT //
 
