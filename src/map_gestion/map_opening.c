@@ -6,11 +6,31 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:09:10 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/07 14:46:53 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/07 15:03:02 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+
+char	*add_endl(char *string)
+{
+	size_t	i;
+	char	*r_string;
+
+	i = 0;
+	while (string[i] && string[i] != '\n')
+		i++;
+	if (ft_strlen(string) == i)
+	{
+		r_string = ft_strjoin(string, "\n");
+		free(string);
+		if (!r_string)
+			return (NULL);
+		return (r_string);
+	}
+	r_string = string;
+	return (r_string);
+}
 
 void	tab_free(char **tab)
 {
@@ -66,6 +86,9 @@ char	**reading_loop(int fd)
 		temp_string = get_next_line(fd);
 		if (temp_string)
 		{
+			temp_string = add_endl(temp_string);
+			if (!temp_string)
+				return (NULL);
 			map_points = update_tab(map_points, y, temp_string);
 			free(temp_string);
 		}
