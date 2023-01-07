@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:09:10 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/05 12:34:17 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/07 14:46:53 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,6 @@ void	tab_free(char **tab)
 	free(tab);
 }
 
-void	free_all(char	**map_points, int y)
-{
-	int	index;
-
-	index = 0;
-	while (index <= y)
-	{
-		free(map_points[index]);
-		index++;
-	}
-	free(map_points);
-}
-
 char	**update_tab(char **map_points, int y, char *temp_string)
 {
 	char	**r_value;
@@ -46,19 +33,19 @@ char	**update_tab(char **map_points, int y, char *temp_string)
 	i = 0;
 	r_value = (char **) malloc ((y + 2) * sizeof(char **));
 	if (!r_value)
-		return (free_all(map_points, y), NULL);
+		return (tab_free(map_points), NULL);
 	while (i < y)
 	{
 		r_value[i] = (char *) malloc (ft_strlen(map_points[i]) + 1);
 		if (!r_value)
-			return (free_all(map_points, y), free_all(r_value, i), NULL);
+			return (tab_free(map_points), tab_free(r_value), NULL);
 		ft_memmove(r_value[i], map_points[i], ft_strlen(map_points[i]) + 1);
 		free(map_points[i]);
 		i++;
 	}
 	r_value[y] = (char *) malloc (ft_strlen(temp_string) + 1);
 	if (!r_value)
-		return (free_all(map_points, y), free_all(r_value, i), NULL);
+		return (tab_free(map_points), tab_free(r_value), NULL);
 	ft_memmove(r_value[y], temp_string, ft_strlen(temp_string) + 1);
 	return (free(map_points), r_value);
 }
