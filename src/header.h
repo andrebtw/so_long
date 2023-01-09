@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/07 16:22:13 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/09 13:05:43 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,22 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-void	error_printing(char *details, char *advice, char *example);
-int		check_errors(int argn, char **args);
-int		main_game(char *file);
-char	**map_opening(char *file);
-int		map_check(char **map);
-void	tab_free(char **tab);
-int		check_if_rectangular(char **map);
-int		check_walls(char **map);
-int		path_check(char **map);
+void		error_printing(char *details, char *advice, char *example);
+int			check_errors(int argn, char **args);
+int			main_game(char *file);
+char		**map_opening(char *file);
+int			map_check(char **map);
+void		tab_free(char **tab);
+int			check_if_rectangular(char **map);
+int			check_walls(char **map);
+
+// PATHFINDING //
+int			path_check(char **map);
+t_map_info	find_p_index(char **map, t_map mapc, t_map_info mapi);
+t_map_info	find_e_index(char **map, t_map mapc, t_map_info mapi);
+int			count_c(char **map, t_map mapc);
+
+
 
 // MAP STRUCT //
 
@@ -49,5 +56,16 @@ typedef struct s_map
 	int	y;
 	int	x;
 }	t_map;
+
+// PATHFINDING STRUCT //
+
+typedef struct s_map_info
+{
+	int	p_index_x;
+	int	p_index_y;
+	int	e_index_x;
+	int	e_index_y;
+	int	c_count;
+}	t_map_info;
 
 #endif
