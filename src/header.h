@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/09 17:42:27 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:32:34 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ typedef struct s_map_info
 	int	c_count;
 }	t_map_info;
 
-
 void		error_printing(char *details, char *advice, char *example);
 int			check_errors(int argn, char **args);
 int			main_game(char *file);
@@ -66,7 +65,6 @@ int			path_check(char **map);
 t_map_info	find_p_index(char **map, t_map mapc, t_map_info mapi);
 t_map_info	find_e_index(char **map, t_map mapc, t_map_info mapi);
 int			count_c(char **map, t_map mapc);
-
-
+int			tab_size(char **tab)
 
 #endif

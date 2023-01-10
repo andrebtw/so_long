@@ -6,27 +6,30 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 16:20:28 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/10 11:01:46 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:37:36 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-int	backtracking(char **map, t_map mapc, t_map_info mapi, int count)
+int	backtracking(char **map, t_map mapc, t_map_info mapi, int **path)
 {
-	if (map[mapc.y][mapc.x] == 'E' && mapi.c_count == count)
-		return (1);
-	else if 
+	
 }
 
 int	path_finding(char **map, t_map mapc, t_map_info mapi)
 {
 	int	count;
+	int	path[tab_size(map)][ft_strlen(map[0])];
 
-	count = 0;
+	count = tab_size(map);
+	while (count)
+	{
+		ft_memset(path[count - 1], 0, ft_strlen())
+	}
 	mapc.x = 0;
 	mapc.y = 0;
-	backtracking(map, mapc, mapi, count);
+	backtracking(map, mapc, mapi);
 	return (0);
 }
 

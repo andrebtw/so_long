@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:03:34 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/09 13:04:12 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:32:09 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,16 @@ int	count_c(char **map, t_map mapc)
 		mapc.y++;
 	}
 	return (count);
+}
+
+int	tab_size(char **tab)
+{
+	int	i;
+
+	i = 0;
+	if (!tab)
+		return (i);
+	while (tab[i])
+		i++;
+	return (i);
 }
