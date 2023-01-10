@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:09:10 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/07 15:03:02 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/09 17:40:55 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ char	*add_endl(char *string)
 			return (NULL);
 		return (r_string);
 	}
-	r_string = string;
-	return (r_string);
+	return (r_string = string, r_string);
 }
 
 void	tab_free(char **tab)
