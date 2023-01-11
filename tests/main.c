@@ -1,13 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/11 12:35:30 by anrodri2          #+#    #+#             */
+/*   Updated: 2023/01/11 13:03:52 by anrodri2         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <stdlib.h>
 
-char file[6][10] = {
-	"1111111111", 
-	"1000000001",
-	"1000000001",
-	"1000000001",
-	"1000000001",
-	"1111111111", 
+int path[5][5] = {
+	1, 1, 1, 1, 1,
+	1, 0, 1, 0, 1, 
+	1, 0, 0, 0, 1,
+	1, 1, 0, 0, 1,
+	1, 1, 1, 1, 1
 };
 
 typedef struct s_map
@@ -16,26 +27,36 @@ typedef struct s_map
 	int	x;
 }	t_map;
 
-int	findpath(int y, int x, t_map map)
+int	findpath(t_map map, t_map end)
 {
-	if (map.y == y && map.x == x)
-	{
-		file[y][x] = '*';
+	if (map.y == end.y && map.x == end.x)
 		return (1);
-	}
-	if (file[y][x] == '0' || file[y][x] == '*')
+	if (path[map.y][map.x] == 0 || path[map.y][map.x] == 2)
 	{
-		if (file[y][x + 1] == '0' || file[y][x + 1] == '*')
+		if (path[map.y + 1][map.x] == 0 || path[map.y + 1][map.x] == 2)
 		{
-			file[y][x + 1] = '*';
-			return (findpath(y, x+1, map));
+			path[map.y][map.x] = 2;
+			map.y++;
+			return (findpath(map, end));
 		}
-		if (file[y + 1][x] == '0' || file[y + 1][x] == '*')
+		if (path[map.y][map.x + 1] == 0 || path[map.y][map.x + 1] == 2)
 		{
-			file[y + 1][x] = '*';
-			return (findpath(y + 1, x, map));
+			path[map.y][map.x] = 2;
+			map.x++;
+			return (findpath(map, end));
 		}
-		return (0);
+		if (path[map.y - 1][map.x] == 0 || path[map.y - 1][map.x] == 2)
+		{
+			path[map.y][map.x] = 2;
+			map.y--;
+			return (findpath(map, end));
+		}
+		if (path[map.y][map.x - 1] == 0 || path[map.y][map.x - 1] == 2)
+		{
+			path[map.y][map.x] = 2;
+			map.x--;
+			return (findpath(map, end));
+		}
 	}
 	return (0);
 }
@@ -43,24 +64,12 @@ int	findpath(int y, int x, t_map map)
 int	main(void)
 {
 	t_map map;
+	t_map end;
 
-	map.x = 2;
-	map.y = 4;
-	int x = 1;
-	int y = 1;
-	int i = 0;
-	int j = 0;
-	//findpath(y, x, map);
-	while (file[i])
-	{
-		j = 0;
-		while (file[i][j])
-		{
-			printf("%c", file[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
+	map.y = 1;
+	map.x = 1;
+	end.y = 1;
+	end.x = 3;
+	printf("%d", findpath(map, end));
 	return (0);
 }
