@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/10 17:46:59 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:20:45 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@
 # define MALLOC_ERROR -2
 
 # include "../libft_updated/libft_updated.h"
-# include "../minilibx-linux/mlx.h"
 # include <stdlib.h>
 # include <string.h>
 # include <stdint.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include <mlx.h>
 
 // MAP STRUCT //
 
@@ -68,5 +66,6 @@ t_map_info	find_p_index(char **map, t_map mapc, t_map_info mapi);
 t_map_info	find_e_index(char **map, t_map mapc, t_map_info mapi);
 int			count_c(char **map, t_map mapc);
 int			tab_size(char **tab);
+int			**get_collectibles(char **map);
 
 #endif

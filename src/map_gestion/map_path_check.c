@@ -6,19 +6,85 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 16:20:28 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/10 17:00:22 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/11 16:22:00 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+/*
+int	findpath(t_map_info map)
+{
+	int	var;
+
+	if (map.p_index_y == end.y && map.p_index_x == end.x)
+		return (1);
+	if (path[map.p_index_y][map.p_index_x] == 0)
+	{
+		if (path[map.p_index_y + 1][map.p_index_x] == 0)
+		{
+			path[map.p_index_y][map.p_index_x] = 2;
+			map.p_index_y++;
+			var = findpath(map);
+			if (var == -1)
+				map.p_index_y--;
+			if (var == 1)
+				return (1);
+		}
+		if (path[map.p_index_y][map.p_index_x + 1] == 0)
+		{
+			path[map.p_index_y][map.p_index_x] = 2;
+			map.p_index_x++;
+			var = findpath(map);
+			if (var == -1)
+				map.p_index_x--;
+			if (var == 1)
+				return (1);
+		}
+		if (path[map.p_index_y - 1][map.p_index_x] == 0)
+		{
+			path[map.p_index_y][map.p_index_x] = 2;
+			map.p_index_y--;
+			var = findpath(map);
+			if (var == -1)
+				map.p_index_y++;
+			if (var == 1)
+				return (1);
+		}
+		if (path[map.p_index_y][map.p_index_x - 1] == 0)
+		{
+			path[map.p_index_y][map.p_index_x] = 2;
+			map.p_index_x--;
+			var = findpath(map);
+			if (var == -1)
+				map.p_index_x++;
+			if (var == 1)
+				return (1);
+		}
+		if (map.p_index_y == end.y && map.p_index_x == end.x)
+			return (1);
+		if (path[map.p_index_y - 1][map.p_index_x] == 2)
+			return (-1);
+		if (path[map.p_index_y][map.p_index_x - 1] == 2)
+			return (-1);
+		if (path[map.p_index_y + 1][map.p_index_x] == 2)
+			return (-1);
+		if (path[map.p_index_y][map.p_index_x + 1] == 2)
+			return (-1);
+	}
+	return (0);
+}*/
 
 int	path_check(char **map)
 {
-	t_map		mapc;
 	t_map_info 	mapi;
+	t_map		mapc;
+	int			**c_points;
 
+	mapc.x = 0;
+	mapc.y = 0;
 	mapi.c_count = count_c(map, mapc);
 	mapi = find_e_index(map, mapc, mapi);
 	mapi = find_p_index(map, mapc, mapi);
+	c_points = get_collectibles(map);
 	return (0);
 }
