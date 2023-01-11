@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 13:03:34 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/11 16:15:12 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:48:44 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ t_map_info	find_p_index(char **map, t_map mapc, t_map_info mapi)
 	while (map[mapc.y])
 	{
 		mapc.x = 0;
-		while(map[mapc.y][mapc.x])
+		while (map[mapc.y][mapc.x])
 		{
 			if (map[mapc.y][mapc.x] == 'P')
 			{
 				mapi.p_index_x = mapc.x;
 				mapi.p_index_y = mapc.y;
-				break;
+				break ;
 			}
 			mapc.x++;
 		}
@@ -41,13 +41,13 @@ t_map_info	find_e_index(char **map, t_map mapc, t_map_info mapi)
 	while (map[mapc.y])
 	{
 		mapc.x = 0;
-		while(map[mapc.y][mapc.x])
+		while (map[mapc.y][mapc.x])
 		{
 			if (map[mapc.y][mapc.x] == 'E')
 			{
 				mapi.e_index_x = mapc.x;
 				mapi.e_index_y = mapc.y;
-				break;
+				break ;
 			}
 			mapc.x++;
 		}
@@ -66,7 +66,7 @@ int	count_c(char **map, t_map mapc)
 	while (map[mapc.y])
 	{
 		mapc.x = 0;
-		while(map[mapc.y][mapc.x])
+		while (map[mapc.y][mapc.x])
 		{
 			if (map[mapc.y][mapc.x] == 'C')
 				count++;

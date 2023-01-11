@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:26:50 by anrodri2          #+#    #+#             */
-/*   Updated: 2022/12/21 16:14:05 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:47:57 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,15 @@ int	**add_element(int **points, int y, int x)
 	int	i;
 	int	**new_points;
 
-	i = 0;
+	i = -1;
 	new_points = (int **) malloc (sizeof(int **) * (tab_len(points) + 2));
-	while (points[i])
+	while (points[++i])
 	{
 		new_points[i] = (int *) malloc (sizeof(int) * 2);
 		if (!new_points[i])
 			return (tab_free_int(new_points), NULL);
 		new_points[i][0] = points[i][0];
 		new_points[i][1] = points[i][1];
-		i++;
 	}
 	new_points[i] = (int *) malloc (sizeof(int) * 2);
 	if (!new_points)

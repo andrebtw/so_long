@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:38:55 by anrodri2          #+#    #+#             */
-/*   Updated: 2022/12/21 21:44:13 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:45:44 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 	free(mlx_ptr);
 	return (0);
 }*/
-
+//graphics_init();
 int	main_game(char *file)
 {
 	char	**map;
@@ -31,6 +31,5 @@ int	main_game(char *file)
 		return (ERROR);
 	if (map_check(map) == ERROR)
 		return (tab_free(map), ERROR);
-	//graphics_init();
 	return (tab_free(map), 0);
 }

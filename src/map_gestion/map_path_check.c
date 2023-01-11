@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 16:20:28 by anrodri2          #+#    #+#             */
-/*   Updated: 2022/12/21 22:09:28 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/11 17:44:52 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	findpath(t_map_info map)
 
 int	path_check(char **map)
 {
-	t_map_info 	mapi;
+	t_map_info	mapi;
 	t_map		mapc;
 	int			**c_coords;
 
