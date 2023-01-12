@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 16:20:28 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/12 13:59:36 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:26:56 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ int	findpath(t_map_info map, char **path, int *end_pos)
 
 	if (map.p_index_y == end_pos[0] && map.p_index_x == end_pos[1])
 		return (1);
-	if (path[map.p_index_y][map.p_index_x] == '0' ||
-		path[map.p_index_y][map.p_index_x] == 'P')
+	if ((path[map.p_index_y][map.p_index_x] == '0' ||
+		path[map.p_index_y][map.p_index_x] == 'P') || (
+			path[map.p_index_y][map.p_index_x] == 'C'
+		))
 	{
 		if (path[map.p_index_y + 1][map.p_index_x] == '0' ||
 			path[map.p_index_y + 1][map.p_index_x] == 'C')
@@ -96,14 +98,15 @@ int	path_check_loop(char *file, int **c_coords, t_map_info mapi)
 			return (MALLOC_ERROR);
 		if (not_end)
 			if (findpath(mapi, map_copy, c_coords[i]) != 1)
-				return (tab_free(map_copy), tab_free_int(c_coords), ERROR);
+				return (tab_free(map_copy), ERROR);
+		/*
 		if (!not_end)
 		{
 			c_coords[0][0] = mapi.e_index_y;
 			c_coords[0][1] = mapi.e_index_x;
 			if (findpath(mapi, map_copy, c_coords[0]) != 1)
-				return (tab_free(map_copy), tab_free_int(c_coords), ERROR);
-		}
+				return (tab_free(map_copy), ERROR);
+		}*/
 		tab_free(map_copy);
 		i++;
 	}
@@ -122,8 +125,9 @@ int	path_check(char **map, char *file)
 	mapi = find_e_index(map, mapc, mapi);
 	mapi = find_p_index(map, mapc, mapi);
 	c_coords = get_collectibles(map);
-	if (path_check_loop(file, c_coords, mapi) != 1)
+	if (path_check_loop(file, c_coords, mapi) == ERROR)
 		return (tab_free_int(c_coords), ERROR);
 	tab_free_int(c_coords);
+	ft_printf("%s", file);
 	return (0);
 }
