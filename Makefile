@@ -18,7 +18,8 @@ SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/map_gestion/map_check_rect_walls.c \
 		$(SRC_DIR)/map_gestion/map_path_check.c \
 		$(SRC_DIR)/map_gestion/map_path_index.c \
-		$(SRC_DIR)/map_gestion/collect_cords.c 
+		$(SRC_DIR)/map_gestion/collect_cords.c \
+		$(SRC_DIR)/map_gestion/map_pathfinding.c
 
 OBJS = $(SRCS:.c=.o)
 
