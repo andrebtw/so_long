@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/12 16:28:55 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:02:42 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int			count_c(char **map, t_map mapc);
 int			tab_size(char **tab);
 int			**get_collectibles(char **map);
 void		tab_free_int(int **tab);
-int			findpath(t_map_info map, char **path, int *end_pos, char *allowed_chars);
+int			findpath(t_map_info map, char **path,
+				int *end_pos, char *allowed_chars);
 
 #endif
