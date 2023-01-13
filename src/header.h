@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/12 17:02:42 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/13 15:29:47 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # include <stdint.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include "../mlx_mac/mlx.h"
 
 // MAP STRUCT //
 
@@ -70,5 +71,22 @@ int			**get_collectibles(char **map);
 void		tab_free_int(int **tab);
 int			findpath(t_map_info map, char **path,
 				int *end_pos, char *allowed_chars);
+
+// MAIN GAME //
+typedef struct s_mlx
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+}	t_mlx;
+
+typedef struct s_image
+{
+	void	*ptr;
+	char	*path;
+	int		width;
+	int		height;
+}	t_image;
+
+t_mlx create_window(char **map);
 
 #endif

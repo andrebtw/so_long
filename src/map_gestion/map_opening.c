@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 19:09:10 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/09 17:40:55 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/13 16:05:54 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,15 @@ void	tab_free(char **tab)
 {
 	int	y;
 
+	if (!tab)
+		return ;
 	y = 0;
 	while (tab[y])
 	{
 		free(tab[y]);
 		y++;
 	}
+	tab = NULL;
 	free(tab);
 }
 
