@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/13 15:29:47 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/14 14:05:47 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	char	**map;
 }	t_mlx;
 
 typedef struct s_image
@@ -87,6 +88,8 @@ typedef struct s_image
 	int		height;
 }	t_image;
 
-t_mlx create_window(char **map);
+t_mlx 	create_window(t_mlx mlx);
+int		close_window(t_mlx *mlx);
+int		close_window_esc(int keycode, t_mlx *mlx);
 
 #endif
