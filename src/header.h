@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/14 15:26:08 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/15 13:56:25 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct s_image
 	int		endian;
 }	t_image;
 
-t_mlx 	create_window(t_mlx mlx);
+int 	create_window(t_mlx *mlx);
 int		close_window(t_mlx *mlx);
 int		close_window_esc(int keycode, t_mlx *mlx);
 
