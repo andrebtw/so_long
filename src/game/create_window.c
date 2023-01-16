@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:09:21 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/15 16:52:59 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/16 11:47:09 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 int	draw_tiles(t_mlx *mlx)
 {
 	t_xmp	grass;
-	//t_xmp	wall;
+	t_xmp	wall;
+	t_xmp	coins;
 	t_map	mapc;
 	t_map	coords;
 
 	grass.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "./assets/grass.xpm", &grass.width, &grass.height);
-	//wall.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "./assets/wall.xpm", &wall.width, &wall.height);
+	wall.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "./assets/wall.xpm", &wall.width, &wall.height);
+	coins.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "./assets/coin.xpm", &wall.width, &wall.height);
 	mapc.y = 0;
 	coords.y = 0;
 	while (mlx->map[mapc.y])
@@ -29,8 +31,12 @@ int	draw_tiles(t_mlx *mlx)
 		coords.x = 0;
 		while (mlx->map[mapc.y][mapc.x])
 		{
-			if (ft_strchr("0CP", mlx->map[mapc.y][mapc.x]))
+			if (ft_strchr("0PCE", mlx->map[mapc.y][mapc.x]))
 				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, grass.ptr, coords.x, coords.y);
+			if (ft_strchr("1", mlx->map[mapc.y][mapc.x]))
+				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, wall.ptr, coords.x, coords.y);
+			if (ft_strchr("C", mlx->map[mapc.y][mapc.x]))
+				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, coins.ptr, coords.x, coords.y);
 			mapc.x++;
 			coords.x = coords.x + 50;
 		}
