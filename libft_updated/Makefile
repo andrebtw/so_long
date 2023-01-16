@@ -70,7 +70,8 @@ SRCS = 	$(LIBFT_DIR)/ft_atoi.c \
 		$(PRINTF_DIR)/ft_putnbr_fd_printf.c \
 		$(PRINTF_DIR)/ft_putstr_fd_printf.c \
 		$(PRINTF_DIR)/ft_sizeof_nb_base.c \
-		$(PRINTF_DIR)/ft_strlen.c
+		$(PRINTF_DIR)/ft_strlen.c \
+		$(LIBFT_DIR)/ft_strjoin_free.c
 
 
 OBJS = $(SRCS:.c=.o)

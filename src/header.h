@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/15 13:56:25 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:54:29 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,6 @@ int			findpath(t_map_info map, char **path,
 				int *end_pos, char *allowed_chars);
 
 // MAIN GAME //
-typedef struct s_mlx
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	char	**map;
-}	t_mlx;
-
 typedef struct s_xmp
 {
 	void	*ptr;
@@ -87,6 +80,30 @@ typedef struct s_xmp
 	int		width;
 	int		height;
 }	t_xmp;
+
+typedef struct s_animation
+{
+	t_xmp	coin;
+}	t_animation;
+
+typedef struct s_mlx
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	char		**map;
+	int			frame_count;
+	int			loop_count;
+	t_animation	animation;
+}	t_mlx;
+
+typedef struct s_map_display
+{
+	t_xmp	grass;
+	t_xmp	wall;
+	t_xmp	coins;
+	t_xmp	spawn;
+	t_xmp	exit;
+}	t_map_display;
 
 typedef struct s_image
 {
@@ -97,8 +114,12 @@ typedef struct s_image
 	int		endian;
 }	t_image;
 
-int 	create_window(t_mlx *mlx);
-int		close_window(t_mlx *mlx);
-int		close_window_esc(int keycode, t_mlx *mlx);
+
+int			create_window(t_mlx *mlx);
+int			close_window(t_mlx *mlx);
+int			close_window_esc(int keycode, t_mlx *mlx);
+
+// ANIMATIONS //
+int			coin_animation(t_mlx *mlx);
 
 #endif

@@ -22,7 +22,8 @@ SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/map_gestion/collect_cords.c \
 		$(SRC_DIR)/map_gestion/map_pathfinding.c \
 		$(SRC_DIR)/game/create_window.c \
-		$(SRC_DIR)/game/close_window_funcs.c
+		$(SRC_DIR)/game/close_window_funcs.c \
+		$(SRC_DIR)/game/coin_animation.c
 
 OBJS = $(SRCS:.c=.o)
 

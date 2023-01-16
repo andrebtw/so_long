@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:46:40 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/07 14:58:43 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:58:36 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+// Additional functions //
+char	*ft_strjoin_free(char *s1, char *s2, int free_one, int free_two);
 
 #endif
