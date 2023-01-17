@@ -3,7 +3,7 @@
 CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -lXext -lX11 -lm -lz
+MLXFLAGS = -framework OpenGL -framework AppKit
 
 
 #### DIRECTORIES ####
@@ -30,7 +30,7 @@ OBJS = $(SRCS:.c=.o)
 #### LIBFT HEADER COMPILED ####
 LIBFT_COMPILED = libft_updated/libft_updated.a
 #### MLX HEADER COMPILED ####
-MLX_COMPILED = mlx_linux/libmlx.a
+MLX_COMPILED = mlx_mac/libmlx.a
 
 ### FINAL COMPILATION FILE ###
 NAME = so_long
@@ -38,7 +38,7 @@ NAME = so_long
 #### RULES ####
 $(NAME):	$(OBJS) $(HEADER)
 			$(MAKE) -C libft_updated/
-			$(MAKE) -C mlx_linux/
+			$(MAKE) -C mlx_mac/
 			$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJS) $(LIBFT_COMPILED) $(MLX_COMPILED) -o $(NAME) -g3
 
 %.o: %.c	$(HEADER) Makefile
