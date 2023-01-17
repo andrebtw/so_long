@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:33:05 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/17 13:25:17 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:38:30 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ int	coin_animation(t_mlx *mlx)
 	if (draw_frame(mlx, location) == ERROR)
 		return (ERROR);
 	mlx->frame_count++;
+	free(location);
 	return (0);
 }

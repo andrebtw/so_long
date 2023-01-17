@@ -2,7 +2,7 @@
 .PHONY: $(NAME) all clean fclean re bonus
 CC = gcc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -framework OpenGL -framework AppKit
 
 
