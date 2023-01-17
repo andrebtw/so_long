@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 16:20:28 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/12 16:28:04 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/17 14:32:23 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	path_check_loop(char *file, int **c_coords, t_map_info mapi)
 		return (MALLOC_ERROR);
 	if (findpath(mapi, map_copy, c_coords[0], "0CPE") != 1)
 		return (tab_free(map_copy), tab_free_int(c_coords), ERROR);
+	tab_free(map_copy);
 	return (0);
 }
 
