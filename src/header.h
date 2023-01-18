@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/17 14:22:14 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:21:07 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # include <stdint.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "../mlx_linux/mlx.h"
+# include "../mlx_mac/mlx.h"
 
 // MAP STRUCT //
 
@@ -84,6 +84,7 @@ typedef struct s_xmp
 typedef struct s_animation
 {
 	t_xmp	coin;
+	t_xmp	grass;
 }	t_animation;
 
 typedef struct s_mlx

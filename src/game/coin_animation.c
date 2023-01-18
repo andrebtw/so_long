@@ -6,13 +6,13 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:33:05 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/17 13:38:30 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:22:56 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-void	draw_frame_loop(t_mlx *mlx, t_map mapc, t_map coords, t_xmp *grass)
+void	draw_frame_loop(t_mlx *mlx, t_map mapc, t_map coords)
 {
 	while (mlx->map[mapc.y])
 	{
@@ -23,7 +23,7 @@ void	draw_frame_loop(t_mlx *mlx, t_map mapc, t_map coords, t_xmp *grass)
 			if (ft_strchr("C", mlx->map[mapc.y][mapc.x]))
 			{
 				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
-					grass->ptr, coords.x, coords.y);
+					mlx->animation.grass.ptr, coords.x, coords.y);
 				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 					mlx->animation.coin.ptr, coords.x, coords.y);
 			}
@@ -38,18 +38,17 @@ int	draw_frame(t_mlx *mlx, char *location)
 {
 	t_map	mapc;
 	t_map	coords;
-	t_xmp	grass;
 
 	coords.x = 0;
 	coords.y = 0;
 	mapc.y = 0;
 	mlx->animation.coin.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, location,
 			&mlx->animation.coin.width, &mlx->animation.coin.height);
-	grass.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "./assets/grass.xpm",
-		&grass.width, &grass.height);
-	if (!mlx->animation.coin.ptr || !grass.ptr)
+	mlx->animation.grass.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "./assets/grass.xpm",
+		&mlx->animation.grass.width, &mlx->animation.grass.height);
+	if (!mlx->animation.coin.ptr || !mlx->animation.grass.ptr)
 		return (ERROR);
-	draw_frame_loop(mlx, mapc, coords, &grass);
+	draw_frame_loop(mlx, mapc, coords);
 	return (0);
 }
 
@@ -61,6 +60,10 @@ int	coin_animation(t_mlx *mlx)
 	{
 		return (mlx->loop_count++, 0);
 	}
+	if (mlx->animation.coin.ptr)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->animation.coin.ptr);
+	if (mlx->animation.grass.ptr)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->animation.grass.ptr);
 	mlx->loop_count = 0;
 	if (mlx->frame_count == 9)
 		mlx->frame_count = 0;
