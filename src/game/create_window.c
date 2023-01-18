@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:09:21 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/16 17:06:12 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/18 21:37:58 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,12 @@ void	draw_loop(t_mlx	*mlx, t_map_display map_display,
 				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 					map_display.wall.ptr, coords.x, coords.y);
 			if (ft_strchr("P", mlx->map[mapc.y][mapc.x]))
+			{
 				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 					map_display.spawn.ptr, coords.x, coords.y);
+				mlx->player.x = mapc.x;
+				mlx->player.y = mapc.y;
+			}
 			if (ft_strchr("E", mlx->map[mapc.y][mapc.x]))
 				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 					map_display.exit.ptr, coords.x, coords.y);
@@ -82,13 +86,6 @@ int	draw_tiles(t_mlx *mlx)
 	return (0);
 }
 
-int	clear_image(t_mlx *mlx)
-{
-	if (mlx->animation.coin.ptr)
-		mlx_destroy_image(mlx->mlx_ptr, mlx->animation.coin.ptr);
-	return (0);
-}
-
 int	create_window(t_mlx *mlx)
 {
 	mlx->mlx_ptr = mlx_init();
@@ -101,8 +98,7 @@ int	create_window(t_mlx *mlx)
 	if (draw_tiles(mlx) == ERROR)
 		return (close_window(&(*mlx)));
 	mlx_hook(mlx->win_ptr, 17, 1L << 5, close_window, &(*mlx));
-	mlx_hook(mlx->win_ptr, 2, 1L << 0, close_window_esc, &(*mlx));
-	mlx_loop_hook(mlx->mlx_ptr, clear_image, &(*mlx));
+	mlx_hook(mlx->win_ptr, 2, 1L << 0, player, &(*mlx));
 	mlx_loop_hook(mlx->mlx_ptr, coin_animation, &(*mlx));
 	mlx_loop(mlx->mlx_ptr);
 	return (0);

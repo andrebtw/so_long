@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/18 19:21:07 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/18 21:36:11 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 # define KYELLOW "\x1B[33m"
 # define KBLUE "\x1B[34m"
 # define KWHITE "\x1B[37m"
+
+// KEYS //
+# define W_KEY 13
+# define A_KEY 0
+# define S_KEY 1
+# define D_KEY 2
+# define ESC_KEY 53
 
 // ERROR CODES //
 # define ERROR -1
@@ -81,6 +88,13 @@ typedef struct s_xmp
 	int		height;
 }	t_xmp;
 
+typedef struct s_player
+{
+	t_xmp	xmp;
+	int		x;
+	int		y;	
+}	t_player;
+
 typedef struct s_animation
 {
 	t_xmp	coin;
@@ -95,6 +109,7 @@ typedef struct s_mlx
 	int			frame_count;
 	int			loop_count;
 	t_animation	animation;
+	t_player	player;
 }	t_mlx;
 
 typedef struct s_map_display
@@ -115,12 +130,13 @@ typedef struct s_image
 	int		endian;
 }	t_image;
 
-
 int			create_window(t_mlx *mlx);
 int			close_window(t_mlx *mlx);
-int			close_window_esc(int keycode, t_mlx *mlx);
 
 // ANIMATIONS //
 int			coin_animation(t_mlx *mlx);
+
+// PLAYER //
+int			player(int keycode, t_mlx *mlx);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:33:05 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/18 19:22:56 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/18 22:30:42 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ void	draw_frame_loop(t_mlx *mlx, t_map mapc, t_map coords)
 				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 					mlx->animation.coin.ptr, coords.x, coords.y);
 			}
+			if (ft_strchr("0", mlx->map[mapc.y][mapc.x]))
+				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
+					mlx->animation.grass.ptr, coords.x, coords.y);
+			mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
+				mlx->player.xmp.ptr, mlx->player.x * 50, mlx->player.y * 50);
 			coords.x = coords.x + 50;
 		}
 		mapc.y++;
@@ -46,7 +51,11 @@ int	draw_frame(t_mlx *mlx, char *location)
 			&mlx->animation.coin.width, &mlx->animation.coin.height);
 	mlx->animation.grass.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "./assets/grass.xpm",
 		&mlx->animation.grass.width, &mlx->animation.grass.height);
+	mlx->player.xmp.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "./assets/player1.xpm",
+			&mlx->player.xmp.width, &mlx->player.xmp.height);
 	if (!mlx->animation.coin.ptr || !mlx->animation.grass.ptr)
+		return (ERROR);
+	if (!mlx->player.xmp.ptr)
 		return (ERROR);
 	draw_frame_loop(mlx, mapc, coords);
 	return (0);
@@ -64,6 +73,8 @@ int	coin_animation(t_mlx *mlx)
 		mlx_destroy_image(mlx->mlx_ptr, mlx->animation.coin.ptr);
 	if (mlx->animation.grass.ptr)
 		mlx_destroy_image(mlx->mlx_ptr, mlx->animation.grass.ptr);
+	if (mlx->player.xmp.ptr)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->player.xmp.ptr);
 	mlx->loop_count = 0;
 	if (mlx->frame_count == 9)
 		mlx->frame_count = 0;
