@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:33:05 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/18 22:30:42 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:19:26 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	coin_animation(t_mlx *mlx)
 {
 	char	*location;
 
+	if (mlx->player.end == 1)
+		close_window(mlx);
 	if (mlx->loop_count != 1000)
 	{
 		return (mlx->loop_count++, 0);

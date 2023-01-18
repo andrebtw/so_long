@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/18 21:36:11 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/18 23:08:42 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ typedef struct s_player
 {
 	t_xmp	xmp;
 	int		x;
-	int		y;	
+	int		y;
+	int		end;
 }	t_player;
 
 typedef struct s_animation
@@ -110,6 +111,8 @@ typedef struct s_mlx
 	int			loop_count;
 	t_animation	animation;
 	t_player	player;
+	int			**collectibles;
+	int			collectibles_n;
 }	t_mlx;
 
 typedef struct s_map_display
