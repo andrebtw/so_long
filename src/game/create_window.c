@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:09:21 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/18 21:37:58 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:09:54 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	create_window(t_mlx *mlx)
 		return (close_window(&(*mlx)));
 	mlx_hook(mlx->win_ptr, 17, 1L << 5, close_window, &(*mlx));
 	mlx_hook(mlx->win_ptr, 2, 1L << 0, player, &(*mlx));
-	mlx_loop_hook(mlx->mlx_ptr, coin_animation, &(*mlx));
+	mlx_loop_hook(mlx->mlx_ptr, main_loop, &(*mlx));
 	mlx_loop(mlx->mlx_ptr);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/19 11:49:08 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:29:30 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ typedef struct s_mlx
 	int			**collectibles;
 	int			collectibles_n;
 	t_xmp		grass_redraw;
+	t_xmp		wall_redraw;
+	int			mouvement_count;
 }	t_mlx;
 
 typedef struct s_map_display
@@ -139,6 +141,7 @@ int			close_window(t_mlx *mlx);
 
 // ANIMATIONS //
 int			coin_animation(t_mlx *mlx);
+int			main_loop(t_mlx *mlx);
 
 // PLAYER //
 int			player(int keycode, t_mlx *mlx);

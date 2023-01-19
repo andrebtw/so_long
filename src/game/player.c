@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 21:27:19 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/19 15:32:41 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/19 16:36:48 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	player_up(t_mlx *mlx)
 
 int	player(int keycode, t_mlx *mlx)
 {
-	ft_printf("%d", mlx->collectibles_n);
 	if (mlx->player.xmp.ptr)
 		mlx_destroy_image(mlx->mlx_ptr, mlx->player.xmp.ptr);
 	if (mlx->grass_redraw.ptr)
@@ -100,6 +99,7 @@ int	player(int keycode, t_mlx *mlx)
 		return (ERROR);
 	if (keycode == ESC_KEY)
 		return (close_window(mlx));
+	mlx->mouvement_count++;
 	if (keycode == W_KEY)
 		return (player_up(mlx));
 	if (keycode == S_KEY)
