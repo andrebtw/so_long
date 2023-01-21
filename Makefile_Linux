@@ -3,7 +3,7 @@
 CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
-MLXFLAGS = -framework OpenGL -framework AppKit
+MLXFLAGS = -lXext -lX11 -lm -lz
 
 
 #### DIRECTORIES ####
@@ -23,16 +23,14 @@ SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/map_gestion/map_pathfinding.c \
 		$(SRC_DIR)/game/create_window.c \
 		$(SRC_DIR)/game/close_window_funcs.c \
-		$(SRC_DIR)/game/coin_animation.c \
-		$(SRC_DIR)/game/player.c \
-		$(SRC_DIR)/game/main_loop.c 
+		$(SRC_DIR)/game/coin_animation.c
 
 OBJS = $(SRCS:.c=.o)
 
 #### LIBFT HEADER COMPILED ####
 LIBFT_COMPILED = libft_updated/libft_updated.a
 #### MLX HEADER COMPILED ####
-MLX_COMPILED = mlx_mac/libmlx.a
+MLX_COMPILED = mlx_linux/libmlx.a
 
 ### FINAL COMPILATION FILE ###
 NAME = so_long
@@ -40,7 +38,7 @@ NAME = so_long
 #### RULES ####
 $(NAME):	$(OBJS) $(HEADER)
 			$(MAKE) -C libft_updated/
-			$(MAKE) -C mlx_mac/
+			$(MAKE) -C mlx_linux/
 			$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJS) $(LIBFT_COMPILED) $(MLX_COMPILED) -o $(NAME) -g3
 
 %.o: %.c	$(HEADER) Makefile

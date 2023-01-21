@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 21:27:19 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/19 16:36:48 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/21 13:02:12 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	re_render(t_mlx *mlx, int y, int x)
 			mlx->player.xmp.ptr, mlx->player.x * 50, mlx->player.y * 50);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 			mlx->grass_redraw.ptr, (mlx->player.x + x) * 50, (mlx->player.y + y) * 50);
-	return (0);
+	return (2);
 }
 
 int	player_down(t_mlx *mlx)
@@ -99,15 +99,18 @@ int	player(int keycode, t_mlx *mlx)
 		return (ERROR);
 	if (keycode == ESC_KEY)
 		return (close_window(mlx));
-	mlx->mouvement_count++;
 	if (keycode == W_KEY)
-		return (player_up(mlx));
+		if (player_up(mlx) == 2)
+			mlx->mouvement_count++;
 	if (keycode == S_KEY)
-		return (player_down(mlx));
+		if (player_down(mlx) == 2)
+			mlx->mouvement_count++;
 	if (keycode == A_KEY)
-		return (player_left(mlx));
+		if (player_left(mlx) == 2)
+			mlx->mouvement_count++;
 	if (keycode == D_KEY)
-		return (player_right(mlx));
+		if (player_right(mlx) == 2)
+			mlx->mouvement_count++;
 	mlx->player.xmp.ptr = NULL;
 	return (0);
 }
