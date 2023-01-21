@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:33:05 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/19 16:08:48 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/21 13:26:47 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ int	draw_frame(t_mlx *mlx, char *location)
 	mapc.y = 0;
 	mlx->animation.coin.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, location,
 			&mlx->animation.coin.width, &mlx->animation.coin.height);
-	mlx->animation.grass.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "./assets/grass.xpm",
-		&mlx->animation.grass.width, &mlx->animation.grass.height);
-	mlx->player.xmp.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "./assets/player1.xpm",
+	mlx->animation.grass.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr,
+			"./assets/grass.xpm",
+			&mlx->animation.grass.width, &mlx->animation.grass.height);
+	mlx->player.xmp.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr,
+			"./assets/player1.xpm",
 			&mlx->player.xmp.width, &mlx->player.xmp.height);
 	if (!mlx->animation.coin.ptr || !mlx->animation.grass.ptr)
 		return (ERROR);
@@ -65,7 +67,8 @@ int	coin_animation(t_mlx *mlx)
 {
 	char	*location;
 
-	location = ft_strjoin_free("./assets/coins/", ft_itoa(mlx->frame_count), 0, 1);
+	location = ft_strjoin_free("./assets/coins/",
+			ft_itoa(mlx->frame_count), 0, 1);
 	if (!location)
 		return (ERROR);
 	location = ft_strjoin_free(location, ".xpm", 1, 0);

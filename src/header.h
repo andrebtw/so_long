@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/19 16:29:30 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/21 13:43:44 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ typedef struct s_map_display
 	t_xmp	grass;
 	t_xmp	wall;
 	t_xmp	coins;
-	t_xmp	spawn;
 	t_xmp	exit;
 }	t_map_display;
 
@@ -145,5 +144,10 @@ int			main_loop(t_mlx *mlx);
 
 // PLAYER //
 int			player(int keycode, t_mlx *mlx);
+int			player_down(t_mlx *mlx);
+int			player_left(t_mlx *mlx);
+int			player_right(t_mlx *mlx);
+int			player_up(t_mlx *mlx);
+int			re_render(t_mlx *mlx, int y, int x);
 
 #endif

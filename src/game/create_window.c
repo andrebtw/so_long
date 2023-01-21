@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:09:21 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/19 16:09:54 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/21 13:38:57 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,12 @@ int	load_tiles(t_mlx *mlx, t_map_display *map_display)
 	map_display->wall.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr,
 			"./assets/wall.xpm",
 			&map_display->wall.width, &map_display->wall.height);
-	map_display->spawn.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr,
-			"./assets/spawn.xpm",
-			&map_display->wall.width, &map_display->wall.height);
 	map_display->exit.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr,
 			"./assets/exit.xpm",
 			&map_display->wall.width, &map_display->wall.height);
 	if (!map_display->grass.ptr || !map_display->wall.ptr)
 		return (error_message());
-	if (!map_display->spawn.ptr || !map_display->exit.ptr)
+	if (!map_display->exit.ptr)
 		return (error_message());
 	return (0);
 }
@@ -58,8 +55,6 @@ void	draw_loop(t_mlx	*mlx, t_map_display map_display,
 					map_display.wall.ptr, coords.x, coords.y);
 			if (ft_strchr("P", mlx->map[mapc.y][mapc.x]))
 			{
-				mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
-					map_display.spawn.ptr, coords.x, coords.y);
 				mlx->player.x = mapc.x;
 				mlx->player.y = mapc.y;
 			}

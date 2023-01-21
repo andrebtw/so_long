@@ -25,6 +25,7 @@ SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/game/close_window_funcs.c \
 		$(SRC_DIR)/game/coin_animation.c \
 		$(SRC_DIR)/game/player.c \
+		$(SRC_DIR)/game/player_movement.c \
 		$(SRC_DIR)/game/main_loop.c 
 
 OBJS = $(SRCS:.c=.o)

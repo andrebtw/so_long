@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 16:06:10 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/19 16:36:34 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/21 13:41:30 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ int	movement(t_mlx *mlx)
 
 	if (mlx->wall_redraw.ptr)
 		mlx_destroy_image(mlx->mlx_ptr, mlx->wall_redraw.ptr);
-	mlx->wall_redraw.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr, "./assets/wall.xpm",
-		&mlx->wall_redraw.width, &mlx->wall_redraw.height);
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->wall_redraw.ptr, 0, 0);
+	mlx->wall_redraw.ptr = mlx_xpm_file_to_image(mlx->mlx_ptr,
+			"./assets/wall.xpm",
+			&mlx->wall_redraw.width, &mlx->wall_redraw.height);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
+		mlx->wall_redraw.ptr, 0, 0);
 	movements = ft_itoa(mlx->mouvement_count);
 	coins_left = ft_itoa(mlx->collectibles_n);
 	if (!movements || !coins_left)
