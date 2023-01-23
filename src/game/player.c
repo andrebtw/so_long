@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 21:27:19 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/21 13:45:29 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:28:12 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	re_render(t_mlx *mlx, int y, int x)
 			"./assets/player1.xpm",
 			&mlx->player.xmp.width, &mlx->player.xmp.height);
 	if (!mlx->player.xmp.ptr)
-		return (ERROR);
+		return (error_message(), close_window(mlx));
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
 		mlx->player.xmp.ptr, mlx->player.x * 50, mlx->player.y * 50);
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr,
@@ -39,7 +39,7 @@ int	player(int keycode, t_mlx *mlx)
 			"./assets/grass.xpm",
 			&mlx->grass_redraw.width, &mlx->grass_redraw.height);
 	if (!mlx->grass_redraw.ptr)
-		return (ERROR);
+		return (ERROR, close_window(mlx));
 	if (keycode == ESC_KEY)
 		return (close_window(mlx));
 	if (keycode == W_KEY)

@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 11:36:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/21 13:43:44 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/23 17:54:46 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_map_info
 }	t_map_info;
 
 void		error_printing(char *details, char *advice, char *example);
+int			error_message(void);
 int			check_errors(int argn, char **args);
 int			main_game(char *file);
 char		**map_opening(char *file);
