@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:09:21 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/01/23 18:28:39 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/01/26 12:37:43 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int	create_window(t_mlx *mlx)
 			tab_size(mlx->map) * 50, "so_long");
 	if (draw_tiles(mlx) == ERROR)
 		return (close_window(&(*mlx)));
+	ft_printf("Movement count : 0\n");
 	mlx_hook(mlx->win_ptr, 17, 1L << 5, close_window, &(*mlx));
 	mlx_hook(mlx->win_ptr, 2, 1L << 0, player, &(*mlx));
 	mlx_loop_hook(mlx->mlx_ptr, main_loop, &(*mlx));

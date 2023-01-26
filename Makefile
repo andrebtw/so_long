@@ -1,5 +1,5 @@
 #### SYSTEM ####
-.PHONY: $(NAME) all clean fclean re bonus
+.PHONY: $(NAME) all clean fclean re bonus lib
 CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
@@ -30,6 +30,8 @@ SRCS =	$(SRC_DIR)/main.c \
 
 OBJS = $(SRCS:.c=.o)
 
+HEADER = $(SRC_DIR)/header.h
+
 #### LIBFT HEADER COMPILED ####
 LIBFT_COMPILED = libft_updated/libft_updated.a
 #### MLX HEADER COMPILED ####
@@ -40,8 +42,7 @@ NAME = so_long
 
 #### RULES ####
 $(NAME):	$(OBJS) $(HEADER)
-			$(MAKE) -C libft_updated/
-			$(MAKE) -C mlx_mac/
+			cd libft_updated && $(MAKE) all
 			$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJS) $(LIBFT_COMPILED) $(MLX_COMPILED) -o $(NAME) -g3
 
 %.o: %.c	$(HEADER) Makefile
@@ -51,10 +52,19 @@ all:		$(NAME)
 
 clean:
 			cd libft_updated && $(MAKE) clean
+			cd mlx_mac && $(MAKE) clean
 			$(RM) $(OBJS)
 
 fclean:
 			cd libft_updated && $(MAKE) fclean
+			cd mlx_mac && $(MAKE) clean
 			$(RM) $(OBJS) $(NAME)
+
+lib:
+			cd libft_updated && $(MAKE) re
+			cd mlx_mac && $(MAKE) re
+
+bonus:
+			$(NAME)
 
 re:	fclean $(NAME)
